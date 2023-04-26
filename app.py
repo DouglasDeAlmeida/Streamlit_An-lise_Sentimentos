@@ -22,7 +22,7 @@ if st.checkbox("Mostrar tabela"):
 #subheader
 st.sidebar.subheader('Tweets Analyser')
 #radio buttons
-tweets=st.sidebar.radio('tipo de sentimento',('positivo','negativo','neutro'))
+tweets=st.sidebar.radio('tipo de sentimento',('positive','negative','neutral'))
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
