@@ -20,7 +20,7 @@ data=pd.read_csv('tweet.csv')
 if st.checkbox("Mostrar tabela"):
     st.write(data.head(50))
 #subheader
-st.sidebar.subheader('Tweets Analyser')
+st.sidebar.subheader('Analisador de Tweets')
 #radio buttons
 tweets=st.sidebar.radio('tipo de sentimento',('positive','negative','neutral'))
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
@@ -29,10 +29,10 @@ st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
 #selectbox + visualisation
 # An optional string to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content.
 ## Multiple widgets of the same type may not share the same key.
-select=st.sidebar.selectbox('Visualisation Of Tweets',['Histogram','Pie Chart'],key=1)
+select=st.sidebar.selectbox('Visualização dos tweets',['Histogram','Pie Chart'],key=1)
 sentiment=data['airline_sentiment'].value_counts()
 sentiment=pd.DataFrame({'Sentiment':sentiment.index,'Tweets':sentiment.values})
-st.markdown("###  Sentiment count")
+st.markdown("###  Sentimentos em relação às empresas")
 if select == "Histogram":
         fig = px.bar(sentiment, x='Sentiment', y='Tweets', color = 'Tweets', height= 500)
         st.plotly_chart(fig)
@@ -41,8 +41,8 @@ else:
         st.plotly_chart(fig)
 
 #slider
-st.sidebar.markdown('Time & Location of tweets')
-hr = st.sidebar.slider("Hour of the day", 0, 23)
+st.sidebar.markdown('Hora e local dos tweets')
+hr = st.sidebar.slider("Hora do Dia", 0, 23)
 data['Date'] = pd.to_datetime(data['tweet_created'])
 hr_data = data[data['Date'].dt.hour == hr]
 if not st.sidebar.checkbox("Hide", True, key='2'):
