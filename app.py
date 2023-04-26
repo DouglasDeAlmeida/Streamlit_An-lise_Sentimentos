@@ -8,21 +8,21 @@ import numpy as np
 #title
 st.title('Tweet Sentiment Analysis')
 #markdown
-st.markdown('This application is all about tweet sentiment analysis of airlines. We can analyse reviews of the passengers using this streamlit app.')
+#st.markdown('This application is all about tweet sentiment analysis of airlines. We can analyse reviews of the passengers using this streamlit app.')
 #sidebar
-st.sidebar.title('Sentiment analysis of airlines')
+st.sidebar.title('Análise de Sentimedos das companhias aéreas')
 # sidebar markdown 
-st.sidebar.markdown("🛫We can analyse passengers review from this application.🛫")
+st.sidebar.markdown("🛫Nesta apresentação será feita uma análise das reviews dos passageiros de companhias aéreas americanas.🛫")
 #loading the data (the csv file is in the same folder)
 #if the file is stored the copy the path and paste in read_csv method.
 data=pd.read_csv('tweet.csv')
 #checkbox to show data 
-if st.checkbox("Show Data"):
+if st.checkbox("Mostrar tabela"):
     st.write(data.head(50))
 #subheader
 st.sidebar.subheader('Tweets Analyser')
 #radio buttons
-tweets=st.sidebar.radio('Sentiment Type',('positive','negative','neutral'))
+tweets=st.sidebar.radio('tipo de sentimento',('positivo','negativo','neutro'))
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
 st.write(data.query('airline_sentiment==@tweets')[['text']].sample(1).iat[0,0])
