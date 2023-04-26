@@ -51,7 +51,7 @@ if not st.sidebar.checkbox("Hide", True, key='2'):
     st.map(hr_data)
 
 #multiselect
-st.sidebar.subheader("Airline tweets by sentiment")
+st.sidebar.subheader("Sentimento dos tweets em relação a cada companhia")
 choice = st.sidebar.multiselect("Airlines", ('US Airways', 'United', 'American', 'Southwest', 'Delta', 'Virgin America'), key = '0')  
 if len(choice)>0:
     air_data=data[data.airline.isin(choice)]
